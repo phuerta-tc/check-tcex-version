@@ -1,6 +1,7 @@
 """Check TCEX Version"""
 # standard library
 import argparse
+import os
 import sys
 from typing import Optional, Sequence
 
@@ -10,6 +11,19 @@ import sh
 
 def check_tcex(pip_location):
     """Check TCEX version"""
+
+    if pip_location.startswith('$'):
+        _env_var = pip_location
+        print(f'pip location has been provided as an environment variable: {_env_var}')
+        pip_location = os.getenv(pip_location[1:], None)
+
+        if not pip_location:
+            print(
+                f'pip location was provided as environment variable "{_env_var}", but environment '
+                'variable has no value or is blank'
+            )
+            return 1
+
     try:
         pip_command = sh.Command(pip_location)
     except Exception:

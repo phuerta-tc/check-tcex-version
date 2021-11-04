@@ -16,6 +16,7 @@ def check_tcex(pip_location):
         _env_var = pip_location
         print(f'pip location has been provided as an environment variable: {_env_var}')
         pip_location = os.getenv(pip_location[1:], None)
+        print(f'Environment variable value: {pip_location}')
 
         if not pip_location:
             print(
@@ -55,7 +56,13 @@ def main(argv: Optional[Sequence[str]] = None):
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--pip_location', required=True)
+    parser.add_argument('--skip_on_gitlab_ci', action='store_true', default=False)
     args = parser.parse_args(argv)
+
+    if args.skip_on_gitlab_ci and os.getenv('CI', False):
+        print('Hook is currently running within a GitLab Pipeline environment. Skipping execution')
+        return 0
+
     return check_tcex(args.pip_location)
 
 

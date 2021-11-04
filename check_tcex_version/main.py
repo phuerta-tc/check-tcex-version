@@ -1,4 +1,4 @@
-"""Fix README.md"""
+"""Check TCEX Version"""
 # standard library
 import sys
 from typing import Optional, Sequence

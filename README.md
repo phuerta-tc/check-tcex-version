@@ -1,4 +1,4 @@
-# check-app-readme
+# check-tcex-version
 
 Check that TCEX version is up to date.
 

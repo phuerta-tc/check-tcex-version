@@ -10,6 +10,8 @@ import sh
 def main(argv: Optional[Sequence[str]] = None):
     """Entry point for pre-commit hook."""
     return_code = 0
+    pip_path = sh.which('pip')
+    print(f'pip: {pip_path}')
     output = sh.pip('list', outdated=True).strip()
     print(output)
     if output is not None:

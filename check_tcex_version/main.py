@@ -31,10 +31,9 @@ def check_tcex(pip_location):
             version = line.split()[-2]
             print(f'A new version of TCEX is available: {version}')
             return 1
-    else:
-        print('TCEX is up to date')
-        # return 1 to see if pre-commit prints output on failure
-        return 1
+
+    print('TCEX is up to date')
+    return 0
 
 
 def main(argv: Optional[Sequence[str]] = None):

@@ -43,7 +43,7 @@ def main(argv: Optional[Sequence[str]] = None):
     parser = argparse.ArgumentParser()
     parser.add_argument('--pip_location', required=True)
     args = parser.parse_args(argv)
-    check_tcex(args.pip_location)
+    return check_tcex(args.pip_location)
 
 
 if __name__ == '__main__':

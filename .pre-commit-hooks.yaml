@@ -1,0 +1,8 @@
+- id: check-tcex-version
+  always_run: true
+  description: Check that TCEX version is up to date
+  entry: check-app-readme
+  files: 'README.md'
+  language: python
+  name: Check TCEX version
+  pass_filenames: false
